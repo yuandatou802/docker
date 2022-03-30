@@ -1,0 +1,47 @@
+基于Centos 7.9 平台 内核3.10（Unifi云主机控制器搭建）
+
+第一步：升级系统插件，使平台的插件最新：
+     1.yum update
+
+第二步：关闭firewalld
+     1.systemctl disable firewalld.service
+     2.systemctl stop firewalld.service
+
+第三步：安装mongodb
+     1.添加mongodb安装源，新建安装源目录-参考此网站(https://blog.slogra.com/post-728.html)----仅3.4这个版本
+     2.也可以自己去mongodb官网安装，版本3.4才能使用(https://www.mongodb.com/try/download/community)
+     3.启动mongodb服务，并查看服务是否正常。
+     备注：经过不同版本测试，只用3.4这个版本能和后面的unifi-controller服务配合使用
+
+第四步：安装jdk
+     1.yum search java|grep jdk  (查找jdk版本)
+     2.yum install -y java-1.8.0-openjdk(安装1.8的就ok，也可以安装其他版本)
+     3.安装完成后，检查相应版本的jdk是否安装成功（java -version）
+
+第五步：安装Unifi Controller
+     1.下载Unifi Controller的rpm包(https://dl.marmotte.net/rpms/redhat/el7/x86_64/)
+        最好是wget下来，然后rpm安装
+        1，wget https://dl.marmotte.net/rpms/redhat/el7/x86_64/unifi-controller-5.8.24-1.el7/unifi-controller-5.8.24-1.el7.x86_64.rpm
+        2，rpm -ivh 安装包 --nodeps --force   
+     2.启动unifi服务，并查看此项服务是否正常
+
+第六步：在iptalbles中添加unifi的允许端口
+       -A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+       -A INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
+       -A INPUT -m state --state NEW -m tcp -p tcp --dport 8843 -j ACCEPT
+       -A INPUT -m state --state NEW -m tcp -p tcp --dport 8880 -j ACCEPT
+       -A INPUT -m state --state NEW -m udp -p udp --dport 10001 -j ACCEPT
+
+
+
+ 第七步：添加unifi设备，参考一下网址
+      1.https://help.ui.com.cn/articles/115000207862/
+
+
+
+扩展：基于Ubuntu/Debain版的Unifi控制器在云主机上的安装教程：
+     https://help.ui.com.cn/articles/360000002802/
+
+
+
+      
