@@ -6,5 +6,7 @@
 <tr>
 <td>row 2, cell 1</td>
 <td>row 2, cell 2</td>
+<td>row 2, cell 3</td>
+<td>row 2, cell 4</td>
 </tr>
 </table>
