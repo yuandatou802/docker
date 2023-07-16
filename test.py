@@ -1,2 +1,3 @@
-print("test.fiel")
-print("hello world")
+import psutil
+
+print(psutil.cpu_count())
