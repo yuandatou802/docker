@@ -1,4 +1,4 @@
-#!/bin/bin/env ptyhon3
+#!/bin/bin/env
 # -*- coding:utf-8 -*-
 
 import os,sys
