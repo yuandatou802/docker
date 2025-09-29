@@ -1,6 +1,5 @@
 import psutil
 
 print(psutil.cpu_count())
-
-faofajfla
+print('abc')
 print(psutil.virtual_memory())
